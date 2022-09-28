@@ -10,4 +10,4 @@
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 
-![](figs/gta-img.png)
+![](figs/gtaimg.png)
