@@ -1,5 +1,4 @@
-
-## Load Packages
+## Load Required Packages
 library(dplyr)
 library(plotly)
 
@@ -56,6 +55,7 @@ fig <- subplot(p1, p2, nrows = 2, heights = c(0.75, 0.25)) %>%
       x = 0.05,
       y = 0.9
     ),
+    margin = list(l = 50, r = 50, b = 50, t = 100, pad = 5),
     annotations = list(
       text = paste("Source:", url),
       xref = "paper", yref = "paper",
@@ -64,4 +64,6 @@ fig <- subplot(p1, p2, nrows = 2, heights = c(0.75, 0.25)) %>%
     ),
     showlegend = FALSE, margin = 0.01
   )
+
+# Print final plot
 fig
