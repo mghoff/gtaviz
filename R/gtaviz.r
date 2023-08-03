@@ -9,21 +9,23 @@ giss_raw <- read.csv(paste0(url, "tabledata_v4/GLB.Ts+dSST.csv"), skip = 1)
 
 # Clean data
 giss_avg <- as.data.frame(sapply(giss_raw[, 1:13], as.numeric))
-giss_cln <- giss_avg %>%
-  tidyr::pivot_longer(cols = !Year, names_to = "month") %>%
-  rename(year = Year,
-         month_lbl = month) %>%
-  mutate(month = match(tolower(month_lbl), tolower(month.abb)),
-         date = as.Date(paste(year, month, "01", sep = "-"))) %>%
+giss_cln <- giss_avg |>
+  tidyr::pivot_longer(cols = !Year, names_to = "month") |>
+  rename(year = Year, month_lbl = month) |>
+  mutate(
+    month = match(tolower(month_lbl), tolower(month.abb)),
+    date = as.Date(paste(year, month, "01", sep = "-"))
+  ) |>
   select(year, date, month, month_lbl, value)
 
 
 ## Plot data
 # Heatmap
-p1 <- giss_cln %>%
+p1 <- giss_cln |>
   plot_ly(
     x =~ year, y =~ month_lbl, z =~ value,
-    type = "heatmap", colors = "inferno") %>%
+    type = "heatmap", colors = "inferno"
+  ) |>
   layout(
     yaxis = list(
       title = "",
@@ -35,10 +37,11 @@ p1 <- giss_cln %>%
   )
 
 # Time Series
-p2 <- giss_cln %>%
+p2 <- giss_cln |>
   plot_ly(
     x =~ date, y =~ value, color =~ "black",
-    type = "scatter", mode = "line", colors = "black") %>%
+    type = "scatter", mode = "line", colors = "black"
+  ) |>
   layout(
     xaxis = list(showticklabels = FALSE),
     margin = c(0, 0, 0, 0)
@@ -47,8 +50,8 @@ p2 <- giss_cln %>%
 # Final subplot
 ttl <- "Global Temperature Anomaly"
 subttl <- " - Difference from Long-Term Mean (\u00B0C)"
-fig <- subplot(p1, p2, nrows = 2, heights = c(0.75, 0.25)) %>%
-  hide_colorbar() %>%
+fig <- subplot(p1, p2, nrows = 2, heights = c(0.75, 0.25)) |>
+  hide_colorbar() |>
   layout(
     title = list(
       text = paste(ttl, subttl, sep = "\n"),
@@ -67,3 +70,5 @@ fig <- subplot(p1, p2, nrows = 2, heights = c(0.75, 0.25)) %>%
 
 # Print final plot
 fig
+# Need to manually save plot to png.
+# png plot dims: w = 1628; h = 880
