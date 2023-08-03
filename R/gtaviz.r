@@ -71,4 +71,4 @@ fig <- subplot(p1, p2, nrows = 2, heights = c(0.75, 0.25)) |>
 # Print final plot
 fig
 # Need to manually save plot to png.
-# png plot dims: w = 1628; h = 880
+# png plot dims: w = 1255; h = 668
