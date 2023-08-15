@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Visualization of NASA’s GISS Global Temperature Anomaly Data
+# gtaviz - a visualization of NASA’s GISS Global Temperature Anomalies data
 
 **Author:** [Matthew Hoff](https://github.com/mghoff) <br/> **License:**
 [MIT](https://opensource.org/licenses/MIT) <br/>
@@ -10,5 +10,5 @@
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 
-See the GitHub Pages site for more information and the interactive
-visualization.
+Visit my [GitHub Pages](https://mghoff.github.io/gtaviz/) site for more
+information and the interactive visualization.
