@@ -19,6 +19,7 @@ jobs:
         run: |
           install.packages("dplyr")
           install.packages("tidyr")
+          install.packages("httr")
           install.packages("plotly")
           install.packages("rmarkdown")
         shell: Rscript {0}
@@ -27,5 +28,5 @@ jobs:
       - name: Commit results
         run: |
           git add -A
-          git commit index.html -m 'rebuild index.html' || echo "No changes to commit"
+          git commit ./docs/index.html -m 'rebuild index.html' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
