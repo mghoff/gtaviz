@@ -1,19 +1,20 @@
+name: Render GitHub Page
+
 on:
   push:
-    branches:
-    - master
-    - main
+    branches: [ "main" ]
   schedule:
-    - cron: "* /15 * * *"
-
-name: Render GitHub Page
+    - cron: '15 * * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@v1
+      - uses: actions/checkout@v3
+      - uses: r-lib/actions/setup-r@master
+        with:
+          r-version: '4.2.1'
+      - uses: r-lib/actions/setup-pandoc@master
       - name: Install dependencies
         run: |
           install.packages("dplyr")
