@@ -27,7 +27,13 @@ jobs:
           install.packages("rmarkdown")
         shell: Rscript {0}
       - name: Render Site
-        run: Rscript -e 'rmarkdown::render("./docs/index.Rmd", output_format = "html_document")'
+        run: |
+          rmarkdown::render(
+            input = "./docs/index.Rmd",
+            output_format = "html_document",
+            output_file = "./docs/index.html"
+          )
+        shell: Rscript {0}
       - name: Commit results
         run: |
           git add -A
