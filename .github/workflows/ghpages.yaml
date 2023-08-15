@@ -25,13 +25,14 @@ jobs:
           install.packages("httr")
           install.packages("plotly")
           install.packages("rmarkdown")
+          print(getwd())
         shell: Rscript {0}
       - name: Render Site
         run: |
           rmarkdown::render(
-            input = "./docs/index.Rmd",
+            input = "/docs/index.Rmd",
             output_format = "html_document",
-            output_file = "./docs/index.html"
+            output_file = "/docs/index.html"
           )
         shell: Rscript {0}
       - name: Commit results
