@@ -24,7 +24,8 @@ giss_cln <- giss_avg |>
 p1 <- giss_cln |>
   plot_ly(
     x =~ year, y =~ month_lbl, z =~ value,
-    type = "heatmap", colors = "inferno"
+    type = "heatmap", colors = "inferno",
+    width = 1000, height = 600
   ) |>
   layout(
     yaxis = list(
@@ -39,8 +40,10 @@ p1 <- giss_cln |>
 # Time Series
 p2 <- giss_cln |>
   plot_ly(
-    x =~ date, y =~ value, color =~ "black",
-    type = "scatter", mode = "line", colors = "black"
+    x =~ date, y =~ value,
+    color = "black", colors = "black",
+    type = "scatter", mode = "line",
+    width = 1000, height = 600
   ) |>
   layout(
     xaxis = list(showticklabels = FALSE),
@@ -50,7 +53,7 @@ p2 <- giss_cln |>
 # Final subplot
 ttl <- "Global Temperature Anomaly"
 subttl <- " - Difference from Long-Term Mean (\u00B0C)"
-fig <- subplot(p1, p2, nrows = 2, heights = c(0.75, 0.25)) |>
+fig <- subplot(p1, p2, nrows = 2, heights = c(0.7, 0.3)) |>
   hide_colorbar() |>
   layout(
     title = list(
@@ -60,15 +63,10 @@ fig <- subplot(p1, p2, nrows = 2, heights = c(0.75, 0.25)) |>
     ),
     margin = list(l = 50, r = 50, b = 50, t = 100, pad = 5),
     annotations = list(
-      text = paste("Source:", url),
+      text = paste("*Source: ", url),
       xref = "paper", yref = "paper",
       xanchor = "right", yanchor = "auto",
       x = 1, y = 0, showarrow = FALSE
     ),
     showlegend = FALSE, margin = 0.01
   )
-
-# Print final plot
-fig
-# Need to manually save plot to png.
-# png plot dims: w = 1255; h = 668
