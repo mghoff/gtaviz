@@ -22,4 +22,4 @@ as provided by [NASA's GISS Surface Temperature Analysis (GISTEMP)](https://data
 fig
 ```
 
-Last updated on `r Sys.Date()`.
+Last updated on `r format(as.POSIXct(Sys.time()), tz = "America/New_York", usetz = TRUE)`.
