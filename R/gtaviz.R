@@ -11,23 +11,23 @@ giss_raw <- read.csv(paste0(url, "tabledata_v4/GLB.Ts+dSST.csv"), skip = 1)
 giss_avg <- as.data.frame(sapply(giss_raw[, 1:13], as.numeric))
 giss_cln <- giss_avg |>
   tidyr::pivot_longer(cols = !Year, names_to = "month") |>
-  rename(year = Year, month_lbl = month) |>
-  mutate(
+  dplyr::rename(year = Year, month_lbl = month) |>
+  dplyr::mutate(
     month = match(tolower(month_lbl), tolower(month.abb)),
     date = as.Date(paste(year, month, "01", sep = "-"))
   ) |>
-  select(year, date, month, month_lbl, value)
+  dplyr::select(year, date, month, month_lbl, value)
 
 
 ## Plot data
 # Heatmap
 p1 <- giss_cln |>
-  plot_ly(
+  plotly::plot_ly(
     x =~ year, y =~ month_lbl, z =~ value,
     type = "heatmap", colors = "inferno",
     width = 1000, height = 600
   ) |>
-  layout(
+  plotly::layout(
     yaxis = list(
       title = "",
       categoryorder = "array",
@@ -39,13 +39,13 @@ p1 <- giss_cln |>
 
 # Time Series
 p2 <- giss_cln |>
-  plot_ly(
+  plotly::plot_ly(
     x =~ date, y =~ value,
     color = "black", colors = "black",
     type = "scatter", mode = "line",
     width = 1000, height = 600
   ) |>
-  layout(
+  plotly::layout(
     xaxis = list(showticklabels = FALSE),
     margin = c(0, 0, 0, 0)
   )
@@ -53,9 +53,9 @@ p2 <- giss_cln |>
 # Final subplot
 ttl <- "Global Temperature Anomaly"
 subttl <- " - Difference from Long-Term Mean (\u00B0C)"
-fig <- subplot(p1, p2, nrows = 2, heights = c(0.7, 0.3)) |>
-  hide_colorbar() |>
-  layout(
+fig <- plotly::subplot(p1, p2, nrows = 2, heights = c(0.7, 0.3)) |>
+  plotly::hide_colorbar() |>
+  plotly::layout(
     title = list(
       text = paste(ttl, subttl, sep = "\n"),
       x = 0.05,

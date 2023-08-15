@@ -21,3 +21,5 @@ as provided by [NASA's GISS Surface Temperature Analysis (GISTEMP)](https://data
 ```{r plot, echo=FALSE, out.width="100%"}
 fig
 ```
+
+Last updated on `r format(as.POSIXct(Sys.time()), tz = "America/New_York", usetz = TRUE)`.
