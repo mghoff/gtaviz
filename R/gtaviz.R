@@ -17,15 +17,17 @@ giss_cln <- giss_avg |>
     date = as.Date(paste(year, month, "01", sep = "-"))
   ) |>
   dplyr::select(year, date, month, month_lbl, value)
-
+giss_cln$hover <- with(
+  giss_cln, paste("Year: ", year, "<br>Month: ", month_lbl, "<br>Dev.: ", value)
+)
 
 ## Plot data
 # Heatmap
 p1 <- giss_cln |>
   plotly::plot_ly(
-    x =~ year, y =~ month_lbl, z =~ value,
-    type = "heatmap", colors = "inferno",
-    width = 1000, height = 600
+    x =~ year, y =~ month_lbl, z =~ value, text =~ hover,
+    type = "heatmap", colors = "inferno", hoverinfo = "text"
+    # width = 750, height = 600
   ) |>
   plotly::layout(
     yaxis = list(
@@ -34,20 +36,22 @@ p1 <- giss_cln |>
       categoryarray = unique(giss_cln$month_lbl),
       autorange = "reversed"
     ),
-    margin = c(0, 0, 0, 0)
+    margin = c(0, 0, 0, 0),
+    showlegend = FALSE
   )
 
 # Time Series
 p2 <- giss_cln |>
   plotly::plot_ly(
-    x =~ date, y =~ value,
-    color = "black", colors = "black",
-    type = "scatter", mode = "line",
-    width = 1000, height = 600
+    x =~ date, y =~ value, text =~ hover,
+    hoverinfo = "text", color = "black", colors = "black",
+    type = "scatter", mode = "line"
+    # width = 1000, height = 600
   ) |>
   plotly::layout(
     xaxis = list(showticklabels = FALSE),
-    margin = c(0, 0, 0, 0)
+    margin = c(0, 0, 0, 0),
+    showlegend = FALSE
   )
 
 # Final subplot
@@ -57,16 +61,15 @@ fig <- plotly::subplot(p1, p2, nrows = 2, heights = c(0.7, 0.3)) |>
   plotly::hide_colorbar() |>
   plotly::layout(
     title = list(
-      text = paste(ttl, subttl, sep = "\n"),
-      x = 0.05,
-      y = 0.9
+      x = 0.05, y = 0.9,
+      text = paste(ttl, subttl, sep = "\n")
     ),
-    margin = list(l = 50, r = 50, b = 50, t = 100, pad = 5),
     annotations = list(
-      text = paste("*Source: ", url),
+      text = paste("Source: ", url),
       xref = "paper", yref = "paper",
       xanchor = "right", yanchor = "auto",
       x = 1, y = 0, showarrow = FALSE
     ),
-    showlegend = FALSE, margin = 0.01
+    margin = list(l = 50, r = 50, b = 50, t = 100, pad = 5),
+    showlegend = FALSE
   )
