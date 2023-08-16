@@ -35,7 +35,7 @@ jobs:
           rmarkdown::render(
             input = file.path(getwd(), "docs/index.Rmd"),
             output_format = "html_document",
-            output_file = "file.path(getwd(), docs/index.html")
+            output_file = file.path(getwd(), "docs/index.html")
           )
         shell: Rscript {0}
       - name: Commit results
