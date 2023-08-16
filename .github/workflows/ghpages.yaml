@@ -43,6 +43,7 @@ jobs:
           git rev-parse --show-toplevel
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
+          git pull
           git add -A
           git commit -am "scheduled update" || echo "no changes to commit"
           git push origin || echo "no changes to commit"
