@@ -19,6 +19,7 @@ jobs:
           r-version: '4.2.1'
       - uses: r-lib/actions/setup-pandoc@v2
       - name: Install dependencies
+        working-directory: ${{env.working-directory}}
         run: |
           install.packages("dplyr")
           install.packages("tidyr")
@@ -29,11 +30,12 @@ jobs:
           print(dir(getwd()))
         shell: Rscript {0}
       - name: Render Site
+        working-directory: ${{env.working-directory}}
         run: |
           rmarkdown::render(
-            input = "index.Rmd",
+            input = "./docs/index.Rmd",
             output_format = "html_document",
-            output_file = "index.html"
+            output_file = "./docs/index.html"
           )
         shell: Rscript {0}
       - name: Commit results
