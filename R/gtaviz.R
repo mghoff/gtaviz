@@ -27,7 +27,6 @@ p1 <- giss_cln |>
   plotly::plot_ly(
     x =~ year, y =~ month_lbl, z =~ value, text =~ hover,
     type = "heatmap", colors = "inferno", hoverinfo = "text"
-    # width = 750, height = 600
   ) |>
   plotly::layout(
     yaxis = list(
@@ -46,7 +45,6 @@ p2 <- giss_cln |>
     x =~ date, y =~ value, text =~ hover,
     hoverinfo = "text", color = "black", colors = "black",
     type = "scatter", mode = "line"
-    # width = 1000, height = 600
   ) |>
   plotly::layout(
     xaxis = list(showticklabels = FALSE),
