@@ -2,7 +2,8 @@ name: render-gh-pages
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - "main"
   schedule:
     - cron: "30 15 * * *"
 
@@ -26,8 +27,6 @@ jobs:
           install.packages("httr")
           install.packages("plotly")
           install.packages("rmarkdown")
-          print(getwd())
-          print(dir(getwd()))
         shell: Rscript {0}
       - name: Render Site
         working-directory: ${{env.working-directory}}
