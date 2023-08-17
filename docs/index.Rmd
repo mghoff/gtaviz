@@ -16,9 +16,11 @@ source(".././R/gtaviz.R")
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 
-Below is a visual representation the Global Monthly Means-Anomalies for the Combined Land-Surface Air and Sea-Surface Water Temperature data,
-as provided by [NASA's GISS Surface Temperature Analysis (GISTEMP)](https://data.giss.nasa.gov/gistemp/), where "anomaly" is defined as the 
-deviation from the long term mean in degrees Celsius, for which the long term period is 1951-1980:
+Below is a visual representation of the Global Monthly Means-Anomalies for the Combined Land-Surface Air &
+Sea-Surface Water Temperature data, as provided by
+[NASA's GISS Surface Temperature Analysis (GISTEMP)](https://data.giss.nasa.gov/gistemp/),
+where "anomaly" is defined as the deviation from the long term mean in degrees Celsius,
+and this long term period is currently defined as the years 1951-1980:
 
 ```{r plot, echo=FALSE, out.width="100%"}
 fig
