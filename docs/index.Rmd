@@ -1,5 +1,6 @@
 ---
-title: "Visualization of NASA's GISS Global Temperature Anomaly Data"
+title: "Global Temperature Anomalies"
+subtitle: "A visualization of NASA's GISTEMP anomaly data"
 output: html_document
 ---
 
@@ -15,11 +16,12 @@ source(".././R/gtaviz.R")
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 
-This project scrapes and cleans the Global Monthly Means Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies data,
-as provided by [NASA's GISS Surface Temperature Analysis (GISTEMP)](https://data.giss.nasa.gov/gistemp/), to create the below visualization:
+Below is a visual representation the Global Monthly Means-Anomalies for the Combined Land-Surface Air and Sea-Surface Water Temperature data,
+as provided by [NASA's GISS Surface Temperature Analysis (GISTEMP)](https://data.giss.nasa.gov/gistemp/), where "anomaly" is defined as the 
+deviation from the long term mean in degrees Celsius, for which the long term period is 1951-1980:
 
 ```{r plot, echo=FALSE, out.width="100%"}
 fig
 ```
 
-Last updated on `r format(as.POSIXct(Sys.time()), tz = "America/New_York", usetz = TRUE)`.
+Last updated on `r format(as.POSIXct(Sys.time()), "%A, %B %d at %H:%M:%S", tz = "America/New_York", usetz = TRUE)`.
