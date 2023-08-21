@@ -53,14 +53,12 @@ p2 <- giss_cln |>
   )
 
 # Final subplot
-ttl <- "Global Temperature Anomaly"
-subttl <- " - Difference from Long-Term Mean (\u00B0C)"
 fig <- plotly::subplot(p1, p2, nrows = 2, heights = c(0.7, 0.3)) |>
   plotly::hide_colorbar() |>
   plotly::layout(
     title = list(
-      x = 0.05, y = 0.9,
-      text = paste(ttl, subttl, sep = "\n")
+      text = "Global Temperature Anomalies (\u00B0C)",
+      x = 0.05, y = 0.9
     ),
     annotations = list(
       text = paste("Source: ", url),

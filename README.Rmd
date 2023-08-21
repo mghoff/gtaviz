@@ -17,4 +17,5 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 
-Visit my [GitHub Pages](https://mghoff.github.io/gtaviz/) site for more information and the interactive visualization.
+Visit this project's [GitHub Pages](https://mghoff.github.io/gtaviz/) site for more 
+information as well as the interactive visualization.
