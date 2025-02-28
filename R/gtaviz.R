@@ -28,9 +28,15 @@ p1 <- giss_cln |>
     x =~ year, y =~ month_lbl, z =~ value, text =~ hover,
     type = "heatmap", colors = "inferno", hoverinfo = "text"
   ) |>
+  plotly::hide_colorbar() |>
   plotly::layout(
+    title = list(
+      text = "Global Temperature Anomalies (\u00B0C)",
+      x = 0.05, y = 0.9
+    ),
+    xaxis = list(title = "Year"),
     yaxis = list(
-      title = "",
+      title = "Month",
       categoryorder = "array",
       categoryarray = unique(giss_cln$month_lbl),
       autorange = "reversed"
@@ -47,7 +53,12 @@ p2 <- giss_cln |>
     type = "scatter", mode = "line"
   ) |>
   plotly::layout(
-    xaxis = list(showticklabels = FALSE),
+    title = list(
+      text = "Global Temperature Anomalies (\u00B0C)",
+      x = 0.05, y = 0.9
+    ),
+    xaxis = list(title = "Year"),
+    yaxis = list(title = "Deviation (\u00B0C)"),
     margin = c(0, 0, 0, 0),
     showlegend = FALSE
   )
