@@ -19,11 +19,24 @@ source(".././R/gtaviz.R")
 Below is a visual representation of the Global Monthly Means-Anomalies for the Combined Land-Surface Air &
 Sea-Surface Water Temperature data, as provided by
 [NASA's GISS Surface Temperature Analysis (GISTEMP)](https://data.giss.nasa.gov/gistemp/),
-where "anomaly" is defined as the deviation from the long term mean in degrees Celsius,
-and this long term period is currently defined as the years 1951-1980:
+where "anomaly" is defined as the deviation from the long term (1951-1980) mean in degrees Celsius.
 
-```{r plot, echo=FALSE, out.width="100%"}
-fig
+## {.tabset}
+
+### Heatmap
+
+```{r heat, echo=FALSE, warning=FALSE, out.width="100%"}
+p1
 ```
+
+### Line Plot
+
+```{r time, echo=FALSE, warning=FALSE, out.width="100%"}
+p2
+```
+
+## {-}
+
+Source: `r url`
 
 Last updated on `r format(as.POSIXct(Sys.time()), "%A, %B %d at %H:%M:%S", tz = "America/New_York", usetz = TRUE)`.
