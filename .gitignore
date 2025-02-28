@@ -40,3 +40,6 @@ vignettes/*.pdf
 
 # MacOS artifacts
 .DS_Store
+
+# Renders
+docs/*.html
